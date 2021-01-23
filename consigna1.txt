@@ -1,0 +1,19 @@
+a) Problemas de diseño:
+
+	1) El tipo de componente electrico (clase ComponenteElectrico) se guarda como string. 
+	A la hora de comparar los tipos usa un estructura if-else muy larga, lo cual es un claro error.
+	No solo eso sino que ademas no sigue ninguna convención a la hora de nombrar los distintos tipos.
+	2) El problema de arriba tambien trae errores en la clase Casa. Esta tiene como atributos 3 listas
+	que guardan el mismo tipo de dato, sin embargo tiene que distinguirlas una de la otra. A la hora de
+	sacar el consumo tiene que usar 3 ciclos while que quedan mal y pueden traer problemas a la larga
+	igual que los if-else en la clase ComponenteElectrico.
+	3) La clase ComponenteElectrico tiene sus atributos publicos. El programa no deberia poder acceder
+	a los atributos ya que son detalles de implementacion.
+	4) La forma de calcular el consumo no es constante. Para un artefacto se tiene que precioKw * metro = consumo
+	pero para otro precioKw * metro * metro = consumo. Esto resulta absurdo.
+	
+b) Principios SOLID que se violan:
+	
+	Open-Close: Debido a que el tipo de componente electrico se guarda como string, si se quisiera agregar
+	o quitar un tipo, habria que modificar todos las estructuras de control que se usan para trabajar
+	con estos tipo (if-else en la clase ComponenteElectrico y los whiles en Casa).
